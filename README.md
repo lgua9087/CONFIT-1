@@ -8,10 +8,7 @@ The code is based on huggaface's [transformers](https://github.com/huggingface/t
 
 Download the T5, Pegasus, and BART models from [Google Drive]().
 
-
 ## Test
-
-
 
 ## Annotation
 
