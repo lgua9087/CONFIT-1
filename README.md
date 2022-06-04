@@ -12,6 +12,9 @@ Download the T5, Pegasus, and BART models from [Google Drive]().
 
 ## Annotation
 
+[Google Drive](https://drive.google.com/drive/folders/1-IkrMDvDoBaEq9Y_ghSyxaAQIQRNCUbu?usp=sharing) is the unblinded annotation files that I used to compute the distributions in Tables 3 and 4. 
+
+And see analysis.ipynb: the script to calculate the score.
 
 ## Citation
 ```
