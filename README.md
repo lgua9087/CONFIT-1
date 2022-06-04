@@ -6,7 +6,7 @@ The code is based on huggaface's [transformers](https://github.com/huggingface/t
 
 ## Pretrained models
 
-Download the T5, Pegasus, and BART models from [Google Drive]().
+Download the T5, Pegasus, and BART models from [Google Drive](https://drive.google.com/drive/folders/1CgJOKS4uSEHESe6VxCMFHGiEo3fu1xye?usp=sharing).
 
 ## Test
 
