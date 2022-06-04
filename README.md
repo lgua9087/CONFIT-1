@@ -2,11 +2,16 @@
 
 We propose a training strategy that improves the factual consistency and overall quality of summaries via a novel contrastive fine-tuning, called ConFiT. Based on our linguistically-informed typology of errors, we design different modular objectives that each target a specific type.
 
-## Trainig
+The code is based on huggaface's [transformers](https://github.com/huggingface/transformers). Thanks to them! 
+
+## Pretrained models
+
+Download the T5, Pegasus, and BART models from [Google Drive]().
+
 
 ## Test
 
-## Model
+
 
 ## Annotation
 
