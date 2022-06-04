@@ -10,11 +10,37 @@ Download the T5, Pegasus, and BART models from [Google Drive]().
 
 ## Test
 
+```
+from transformers import PegasusTokenizer, PegasusForConditionalGeneration
+model = PegasusForConditionalGeneration.from_pretrained('FROM_OUR_PRETRAINED_MODELS')
+device = "cuda:0"
+model = model.to(device)
+tokenizer = PegasusTokenizer.from_pretrained('google/pegasus-xsum')
+ARTICLE_TO_SUMMARIZE = ('"#ENTER")
+inputs = tokenizer([ARTICLE_TO_SUMMARIZE], max_length=1024, return_tensors='pt')
+print (inputs['input_ids'].shape)
+```
+
+
 ## Annotation
 
 [Google Drive](https://drive.google.com/drive/folders/1-IkrMDvDoBaEq9Y_ghSyxaAQIQRNCUbu?usp=sharing) is the unblinded annotation files that I used to compute the distributions in Tables 3 and 4. 
 
 And see analysis.ipynb: the script to calculate the score.
+
+## Generate Summary
+
+```
+import torch
+input_ids = torch.load('./input_ids.pt')
+decoder_input_ids = torch.load('./decoder_input_ids.pt')
+attention_mask = torch.load('./attention_mask.pt')
+print (input_ids.shape)
+print (decoder_input_ids.shape)
+print (attention_mask.shape)
+output = model(input_ids=input_ids, decoder_input_ids=decoder_input_ids)
+```
+
 
 ## Citation
 ```
