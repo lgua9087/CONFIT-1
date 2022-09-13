@@ -25,10 +25,10 @@ from transformers import (
 from transformers.file_utils import is_offline_mode
 from transformers.trainer_utils import get_last_checkpoint, is_main_process
 from transformers.utils import check_min_version
-from model.local_trainer_ls import Seq2SeqTrainer
-from model.utils import  ModelArguments,DataTrainingArguments
-from model.local_bart_ls import BartForConditionalGeneration
-from model.local_data_collator import DataCollatorForSeq2Seq
+from transformers import Seq2SeqTrainer
+from transformers import ModelArguments,DataTrainingArguments
+from transformers import BartForConditionalGeneration
+from transformers import DataCollatorForSeq2Seq
 from datasets import Dataset
 import jsonlines
 from transformers import BartConfig,PreTrainedTokenizerFast,BartTokenizer
