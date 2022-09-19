@@ -126,6 +126,11 @@ class DataTrainingArguments:
         metadata={"help": "An optional input eval ref data file for whole word mask in Chinese."},
     )
 
+    max_val_samples: Optional[str] = field(
+        default=None,
+        metadata={"help": "An optional input eval ref data file for whole word mask in Chinese."},
+    )
+
     line_by_line: bool = field(
         default=False,
         metadata={"help": "Whether distinct lines of text in the dataset are to be handled as distinct sequences."},
