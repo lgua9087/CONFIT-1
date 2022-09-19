@@ -121,7 +121,7 @@ class DataTrainingArguments:
         metadata={"help": "Whether distinct lines of text in the dataset are to be handled as distinct sequences."},
     )
 
-    mlm: bool = field(
+    use_auth_token: bool = field(
         default=False, metadata={"help": "Train with masked-language modeling loss instead of language modeling."}
     )
     whole_word_mask: bool = field(default=False, metadata={"help": "Whether ot not to use whole word mask."})
