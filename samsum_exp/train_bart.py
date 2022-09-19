@@ -200,7 +200,7 @@ class DataTrainingArguments:
         },
     )
     overwrite_cache: bool = field(
-        default=False, metadata={"help": "Overwrite the cached training and evaluation sets"}
+        default=True, metadata={"help": "Overwrite the cached training and evaluation sets"}
     )
 
 
