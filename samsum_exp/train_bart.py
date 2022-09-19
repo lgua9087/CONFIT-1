@@ -120,6 +120,12 @@ class DataTrainingArguments:
         default=None,
         metadata={"help": "An optional input eval ref data file for whole word mask in Chinese."},
     )
+
+    source_prefix: Optional[str] = field(
+        default=None,
+        metadata={"help": "An optional input eval ref data file for whole word mask in Chinese."},
+    )
+
     line_by_line: bool = field(
         default=False,
         metadata={"help": "Whether distinct lines of text in the dataset are to be handled as distinct sequences."},
@@ -175,6 +181,8 @@ class DataTrainingArguments:
     overwrite_cache: bool = field(
         default=False, metadata={"help": "Overwrite the cached training and evaluation sets"}
     )
+
+
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
 check_min_version("4.4.0.dev0")
