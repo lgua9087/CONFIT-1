@@ -26,7 +26,7 @@ from transformers.file_utils import is_offline_mode
 from transformers.trainer_utils import get_last_checkpoint, is_main_process
 from transformers.utils import check_min_version
 from transformers import Seq2SeqTrainer
-from transformers import ModelArguments,DataTrainingArguments
+# from transformers import ModelArguments,DataTrainingArguments
 # from transformers import BartForConditionalGeneration
 from transformers import DataCollatorForSeq2Seq
 from datasets import Dataset
