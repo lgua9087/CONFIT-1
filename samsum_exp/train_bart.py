@@ -27,7 +27,7 @@ from transformers.trainer_utils import get_last_checkpoint, is_main_process
 from transformers.utils import check_min_version
 from transformers import Seq2SeqTrainer
 from transformers import ModelArguments,DataTrainingArguments
-from transformers import BartForConditionalGeneration
+# from transformers import BartForConditionalGeneration
 from transformers import DataCollatorForSeq2Seq
 from datasets import Dataset
 import jsonlines
@@ -44,6 +44,133 @@ import argparse
 # outdir= args.outdir
 # print (outdir)
 
+@dataclass
+class ModelArguments:
+    """
+    Arguments pertaining to which model/config/tokenizer we are going to fine-tune, or train from scratch.
+    """
+
+    model_name_or_path: Optional[str] = field(
+        default=None,
+        metadata={
+            "help": (
+                "The model checkpoint for weights initialization. Leave None if you want to train a model from"
+                " scratch."
+            )
+        },
+    )
+    model_type: Optional[str] = field(
+        default=None,
+        metadata={"help": "If training from scratch, pass a model type from the list: " + ", ".join(MODEL_TYPES)},
+    )
+    config_name: Optional[str] = field(
+        default=None, metadata={"help": "Pretrained config name or path if not the same as model_name"}
+    )
+    tokenizer_name: Optional[str] = field(
+        default=None, metadata={"help": "Pretrained tokenizer name or path if not the same as model_name"}
+    )
+    cache_dir: Optional[str] = field(
+        default=None,
+        metadata={"help": "Where do you want to store the pretrained models downloaded from huggingface.co"},
+    )
+    use_fast_tokenizer: Optional[str] = field(
+        default=None,
+        metadata={"help": "Where do you want to store the pretrained models downloaded from huggingface.co"},
+    )
+    model_revision: Optional[str] = field(
+        default=None,
+        metadata={"help": "Where do you want to store the pretrained models downloaded from huggingface.co"},
+    )
+
+
+@dataclass
+class DataTrainingArguments:
+    """
+    Arguments pertaining to what data we are going to input our model for training and eval.
+    """
+
+    train_file: Optional[str] = field(
+        default=None, metadata={"help": "The input training data file (a text file)."}
+    )
+    train_data_files: Optional[str] = field(
+        default=None,
+        metadata={
+            "help": (
+                "The input training data files (multiple files in glob format). "
+                "Very often splitting large files to smaller files can prevent tokenizer going out of memory"
+            )
+        },
+    )
+    validation_file: Optional[str] = field(
+        default=None,
+        metadata={"help": "An optional input evaluation data file to evaluate the perplexity on (a text file)."},
+    )
+    train_ref_file: Optional[str] = field(
+        default=None,
+        metadata={"help": "An optional input train ref data file for whole word mask in Chinese."},
+    )
+    test_file: Optional[str] = field(
+        default=None,
+        metadata={"help": "An optional input eval ref data file for whole word mask in Chinese."},
+    )
+    line_by_line: bool = field(
+        default=False,
+        metadata={"help": "Whether distinct lines of text in the dataset are to be handled as distinct sequences."},
+    )
+
+    mlm: bool = field(
+        default=False, metadata={"help": "Train with masked-language modeling loss instead of language modeling."}
+    )
+    whole_word_mask: bool = field(default=False, metadata={"help": "Whether ot not to use whole word mask."})
+    mlm_probability: float = field(
+        default=0.15, metadata={"help": "Ratio of tokens to mask for masked language modeling loss"}
+    )
+    plm_probability: float = field(
+        default=1 / 6,
+        metadata={
+            "help": (
+                "Ratio of length of a span of masked tokens to surrounding context length for permutation language"
+                " modeling."
+            )
+        },
+    )
+    max_train_samples: int = field(
+        default=10000, metadata={"help": "Maximum length of a span of masked tokens for permutation language modeling."}
+    )
+
+    max_source_length: int = field(
+        default=5, metadata={"help": "Maximum length of a span of masked tokens for permutation language modeling."}
+    )
+
+    max_target_length: int = field(
+        default=5, metadata={"help": "Maximum length of a span of masked tokens for permutation language modeling."}
+    )
+
+    preprocessing_num_workers: int = field(
+        default=3, metadata={"help": "Maximum length of a span of masked tokens for permutation language modeling."}
+    )
+
+    val_max_target_length: int = field(
+        default=100, metadata={"help": "Maximum length of a span of masked tokens for permutation language modeling."}
+    )
+
+    num_beams: int = field(
+        default=5, metadata={"help": "Maximum length of a span of masked tokens for permutation language modeling."}
+    )
+
+    block_size: int = field(
+        default=-1,
+        metadata={
+            "help": (
+                "Optional input sequence length after tokenization."
+                "The training dataset will be truncated in block of this size for training."
+                "Default to the model max input length for single sentence inputs (take into account special tokens)."
+            )
+        },
+    )
+    overwrite_cache: bool = field(
+        default=False, metadata={"help": "Overwrite the cached training and evaluation sets"}
+    )
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
 check_min_version("4.4.0.dev0")
@@ -127,8 +254,8 @@ parser = HfArgumentParser((ModelArguments, DataTrainingArguments, Seq2SeqTrainin
 model_args, data_args, training_args = parser.parse_args_into_dataclasses(args)
 
 
-# data_args.max_source_length = 512
-# data_args.max_target_length = 90
+data_args.max_source_length = 512
+data_args.max_target_length = 90
 
 def set_seed(seed):
     random.seed(seed)
