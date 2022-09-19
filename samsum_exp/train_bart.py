@@ -76,16 +76,17 @@ class ModelArguments:
         default=None,
         metadata={"help": "Where do you want to store the pretrained models downloaded from huggingface.co"},
     )
-    use_fast_tokenizer: Optional[str] = field(
-        default=None,
-        metadata={"help": "Where do you want to store the pretrained models downloaded from huggingface.co"},
-    )
+
     model_revision: Optional[str] = field(
         default=None,
         metadata={"help": "Where do you want to store the pretrained models downloaded from huggingface.co"},
     )
     use_auth_token: bool = field(
         default=False, metadata={"help": "Train with masked-language modeling loss instead of language modeling."}
+    )
+
+    use_fast_tokenizer: bool = field(
+        default=True, metadata={"help": "Train with masked-language modeling loss instead of language modeling."}
     )
 
 
