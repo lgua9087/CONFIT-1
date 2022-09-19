@@ -89,6 +89,7 @@ class ModelArguments:
     )
 
 
+
 @dataclass
 class DataTrainingArguments:
     """
@@ -124,9 +125,6 @@ class DataTrainingArguments:
         metadata={"help": "Whether distinct lines of text in the dataset are to be handled as distinct sequences."},
     )
 
-    use_auth_token: bool = field(
-        default=False, metadata={"help": "Train with masked-language modeling loss instead of language modeling."}
-    )
     whole_word_mask: bool = field(default=False, metadata={"help": "Whether ot not to use whole word mask."})
     mlm_probability: float = field(
         default=0.15, metadata={"help": "Ratio of tokens to mask for masked language modeling loss"}
