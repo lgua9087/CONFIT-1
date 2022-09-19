@@ -33,7 +33,7 @@ from datasets import Dataset
 import jsonlines
 from transformers import BartConfig,PreTrainedTokenizerFast,BartTokenizer
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from torch.utils.data.dataloader import DataLoader
 
