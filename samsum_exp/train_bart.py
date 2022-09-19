@@ -182,7 +182,7 @@ class DataTrainingArguments:
     )
 
     val_max_target_length: int = field(
-        default=100, metadata={"help": "Maximum length of a span of masked tokens for permutation language modeling."}
+        default=90, metadata={"help": "Maximum length of a span of masked tokens for permutation language modeling."}
     )
 
     num_beams: int = field(
