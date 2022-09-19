@@ -84,6 +84,9 @@ class ModelArguments:
         default=None,
         metadata={"help": "Where do you want to store the pretrained models downloaded from huggingface.co"},
     )
+    use_auth_token: bool = field(
+        default=False, metadata={"help": "Train with masked-language modeling loss instead of language modeling."}
+    )
 
 
 @dataclass
