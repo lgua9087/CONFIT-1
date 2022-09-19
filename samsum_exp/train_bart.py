@@ -34,6 +34,7 @@ import jsonlines
 from transformers import BartConfig,PreTrainedTokenizerFast,BartTokenizer
 
 from dataclasses import *
+from typing import Optional
 
 from torch.utils.data.dataloader import DataLoader
 
