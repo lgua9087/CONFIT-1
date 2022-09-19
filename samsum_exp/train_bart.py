@@ -174,7 +174,7 @@ class DataTrainingArguments:
     )
 
     max_target_length: int = field(
-        default=5, metadata={"help": "Maximum length of a span of masked tokens for permutation language modeling."}
+        default=90, metadata={"help": "Maximum length of a span of masked tokens for permutation language modeling."}
     )
 
     preprocessing_num_workers: int = field(
