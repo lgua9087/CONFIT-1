@@ -143,7 +143,7 @@ class DataTrainingArguments:
     )
 
     pad_to_max_length: bool = field(
-        default=False,
+        default=True,
         metadata={"help": "Whether distinct lines of text in the dataset are to be handled as distinct sequences."},
     )
 
