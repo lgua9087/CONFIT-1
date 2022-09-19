@@ -127,6 +127,11 @@ class DataTrainingArguments:
         metadata={"help": "An optional input eval ref data file for whole word mask in Chinese."},
     )
 
+    max_test_samples: Optional[str] = field(
+        default=None,
+        metadata={"help": "An optional input eval ref data file for whole word mask in Chinese."},
+    )
+
     max_val_samples: Optional[str] = field(
         default=None,
         metadata={"help": "An optional input eval ref data file for whole word mask in Chinese."},
